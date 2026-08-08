@@ -9,6 +9,13 @@
     box-sizing: border-box;
 }
 
+/* Evita movimiento lateral raro */
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
 /* Estilo general de toda la página */
 body {
     font-family: Arial, Helvetica, sans-serif;
@@ -170,6 +177,7 @@ body {
     position: absolute;
     inset: 0;
     background: linear-gradient(90deg, rgba(0,0,0,0.08), rgba(0,0,0,0.12), rgba(0,0,0,0.2));
+    z-index: 0;
 }
 
 /* Figura roja diagonal */
@@ -182,6 +190,7 @@ body {
     background-color: rgba(210, 0, 18, 0.55);
     transform: skewX(-25deg);
     animation: bajar 1s ease;
+    z-index: 0;
 }
 
 /* Figura naranja diagonal */
@@ -194,6 +203,7 @@ body {
     background-color: rgba(255, 185, 0, 0.35);
     transform: skewX(-25deg);
     animation: bajar 1.3s ease;
+    z-index: 0;
 }
 
 /* Texto de la portada */
@@ -317,12 +327,11 @@ body {
     border-radius: 10px;
 }
 
+/* Contenedor de tarjetas */
 .contenedor-andamios {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 26px;
-
-    /* Esto evita que todos los cuadros crezcan juntos */
     align-items: start;
 }
 
@@ -417,6 +426,11 @@ body {
 .caja-andamio:hover .info-andamio span {
     background-color: #ffcc00;
     color: #111;
+}
+
+/* Cuando una caja está abierta */
+.caja-andamio.activo {
+    transform: translateY(-10px);
 }
 
 /* Información extra que aparece con click */
@@ -567,6 +581,60 @@ footer {
 }
 
 /* =============================== */
+/* DISEÑO PARA TABLET */
+/* =============================== */
+
+@media screen and (max-width: 1100px) {
+
+    /* Header más flexible */
+    .encabezado {
+        min-height: 135px;
+    }
+
+    /* Logo más pequeño */
+    .caja-logo {
+        width: 200px;
+        min-height: 125px;
+    }
+
+    .caja-logo img {
+        width: 180px;
+    }
+
+    /* Menú más pequeño */
+    .menu {
+        gap: 18px;
+    }
+
+    .menu a {
+        font-size: 18px;
+        padding: 10px 6px;
+    }
+
+    /* Redes más pequeñas */
+    .redes-header {
+        top: 22px;
+        right: 22px;
+    }
+
+    .redes-header a {
+        font-size: 13px;
+        padding: 10px 14px;
+    }
+
+    /* Título portada */
+    .contenido-portada h2 {
+        font-size: 46px;
+    }
+
+    /* Tarjetas en dos columnas */
+    .contenedor-andamios {
+        grid-template-columns: repeat(2, 1fr);
+        align-items: start;
+    }
+}
+
+/* =============================== */
 /* DISEÑO PARA CELULAR */
 /* =============================== */
 
@@ -574,293 +642,206 @@ footer {
 
     /* Header en columna */
     .encabezado {
+        position: relative;
         flex-direction: column;
         min-height: auto;
+        padding: 10px 0 15px 0;
     }
 
     /* Logo centrado */
     .caja-logo {
         width: 100%;
-        min-height: 120px;
+        min-height: 105px;
     }
 
     .caja-logo img {
-        width: 180px;
+        width: 145px;
+        max-width: 50%;
     }
 
-    /* Menú */
-    .zona-menu {
-        padding: 15px;
-    }
-
-    .menu-superior {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-    }
-
-    .menu-principal {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .menu {
-        flex-direction: column;
-        text-align: center;
-        gap: 12px;
-    }
-
-    .menu a {
-        font-size: 20px;
-    }
-
-    /* Redes centradas */
-    .redes-header {
-        position: static;
-        justify-content: center;
-        margin-top: 15px;
-        flex-wrap: wrap;
-    }
-
-    /* Portada en celular */
-    .portada {
-        height: auto;
-        min-height: 720px;
-    }
-
-    .imagen-portada {
-        width: 100%;
-        height: 45%;
-        top: auto;
-        bottom: 0;
-        clip-path: none;
-        opacity: 0.45;
-    }
-
-    .contenido-portada {
-        width: 100%;
-        padding: 55px 25px;
-        text-align: center;
-        align-items: center;
-    }
-
-    .contenido-portada h2 {
-        font-size: 38px;
-    }
-
-    .texto-portada {
-        font-size: 18px;
-    }
-
-    .etiqueta {
-        font-size: 13px;
-        letter-spacing: 2px;
-    }
-
-    .botones-portada {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    /* Tarjetas de andamios en una sola columna */
-    .contenedor-andamios {
-        grid-template-columns: 1fr;
-    }
-
-    .caja-andamio {
-        min-height: auto;
-    }
-
-    .caja-andamio img {
-        height: 330px;
-    }
-
-    .titulo-seccion h2 {
-        font-size: 34px;
-    }
-
-    .contacto .boton {
-        margin: 8px;
-    }
-}
-
-/* Cuando una caja está abierta */
-.caja-andamio.activo {
-    transform: translateY(-10px);
-}
-
-/* Evita que el grid estire todas las cajas */
-.contenedor-andamios {
-    align-items: start;
-}
-
-/* =============================== */
-/* CORRECCIÓN FUERTE PARA CELULAR */
-/* =============================== */
-
-@media screen and (max-width: 900px) {
-
-    body {
-        overflow-x: hidden;
-    }
-
-    .encabezado {
-        position: relative;
-        flex-direction: column;
-        min-height: auto;
-        padding-bottom: 15px;
-    }
-
-    .caja-logo {
-        width: 100%;
-        min-height: 110px;
-    }
-
-    .caja-logo img {
-        width: 150px;
-    }
-
+    /* Zona del menú */
     .zona-menu {
         width: 100%;
-        padding: 10px;
+        padding: 0 14px;
     }
 
+    /* Quitamos el menú superior en celular */
     .menu-superior {
         display: none;
     }
 
+    /* Menú principal centrado */
     .menu-principal {
         width: 100%;
         justify-content: center;
     }
 
+    /* Menú en dos columnas */
     .menu {
         width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px;
+        max-width: 390px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 9px;
+        margin: 0 auto;
     }
 
+    /* Botones del menú */
     .menu a {
-        font-size: 15px;
-        padding: 8px 10px;
+        background-color: #f2f2f2;
+        color: #111;
+        font-size: 14px;
+        padding: 11px 8px;
+        border-radius: 22px;
         text-align: center;
+        line-height: 1.15;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     }
 
+    /* Efecto del menú en celular */
+    .menu a:hover {
+        background-color: #e60000;
+        color: white;
+    }
+
+    /* Redes sociales debajo del menú */
     .redes-header {
         position: static;
-        margin-top: 12px;
+        margin-top: 14px;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 8px;
+        gap: 9px;
     }
 
+    /* Botones de redes compactos */
     .redes-header a {
         font-size: 12px;
-        padding: 9px 12px;
+        padding: 10px 13px;
+        border-radius: 22px;
     }
 
+    /* Portada adaptada a celular */
     .portada {
         height: auto;
-        min-height: 640px;
+        min-height: 620px;
     }
 
+    /* Imagen de portada abajo */
     .imagen-portada {
         width: 100%;
-        height: 45%;
+        height: 42%;
         top: auto;
         bottom: 0;
         clip-path: none;
-        opacity: 0.55;
+        opacity: 0.50;
         background-position: center;
     }
 
+    /* Texto de portada */
     .contenido-portada {
         width: 100%;
-        min-height: 420px;
-        padding: 45px 25px;
+        min-height: 400px;
+        padding: 38px 22px;
         text-align: center;
         align-items: center;
         justify-content: center;
     }
 
+    /* Etiqueta roja */
     .etiqueta {
-        font-size: 12px;
+        font-size: 11px;
         letter-spacing: 2px;
         padding: 8px 12px;
+        margin-bottom: 18px;
     }
 
+    /* Título de portada */
     .contenido-portada h2 {
         font-size: 34px;
-        line-height: 1.15;
+        line-height: 1.12;
         text-shadow: 3px 3px 0 #111;
     }
 
+    /* Texto de portada */
     .texto-portada {
-        font-size: 17px;
+        font-size: 16px;
         max-width: 100%;
+        margin: 18px 0;
     }
 
+    /* Botones de portada */
     .botones-portada {
         flex-direction: column;
         align-items: center;
+        gap: 10px;
     }
 
+    /* Botones generales */
     .boton {
-        font-size: 14px;
-        padding: 13px 20px;
+        font-size: 13px;
+        padding: 12px 18px;
     }
 
+    /* Sección de andamios */
     .tipos-andamios {
         padding: 60px 6%;
     }
 
+    /* Texto pequeño del título */
     .titulo-seccion p {
-        font-size: 12px;
-        letter-spacing: 4px;
+        font-size: 11px;
+        letter-spacing: 3px;
     }
 
+    /* Título grande */
     .titulo-seccion h2 {
         font-size: 34px;
     }
 
+    /* Tarjetas una por una */
     .contenedor-andamios {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 32px;
         align-items: start;
     }
 
+    /* Cada tarjeta centrada */
     .caja-andamio {
         width: 100%;
         max-width: 380px;
         margin: 0 auto;
     }
 
+    /* Imagen de cada andamio */
     .caja-andamio img {
         height: 300px;
         padding: 24px;
     }
 
+    /* Cuadro blanco de información */
     .info-andamio {
         margin: -15px 18px 20px 18px;
         padding: 22px;
     }
 
+    /* Nombre del andamio */
     .info-andamio h3 {
         font-size: 24px;
     }
 
+    /* Descripción del andamio */
     .info-andamio p {
         font-size: 15px;
     }
 
+    /* Información negra que aparece con click */
     .info-extra {
         margin: 0 18px 20px 18px;
         font-size: 14px;
     }
 
+    /* Sección nosotros */
     .nosotros {
         padding: 60px 8%;
         text-align: center;
@@ -874,6 +855,7 @@ footer {
         font-size: 17px;
     }
 
+    /* Contacto */
     .contacto {
         padding: 60px 8%;
     }
@@ -882,129 +864,9 @@ footer {
         display: block;
         margin: 10px auto;
     }
-}
 
-/* =============================== */
-/* AJUSTE FINAL PARA CELULAR */
-/* =============================== */
-
-@media screen and (max-width: 768px) {
-
-    /* Evita que se haga más ancho de lo normal */
-    html,
-    body {
-        width: 100%;
-        overflow-x: hidden;
-    }
-
-    /* Header más compacto */
-    .encabezado {
-        position: relative;
-        min-height: auto;
-        padding: 8px 0 12px 0;
-    }
-
-    /* Logo más chico en teléfono */
-    .caja-logo {
-        width: 100%;
-        min-height: 95px;
-    }
-
-    .caja-logo img {
-        width: 135px;
-        max-width: 45%;
-    }
-
-    /* Ocultamos menú superior en teléfono */
-    .menu-superior {
-        display: none;
-    }
-
-    /* Zona del menú */
-    .zona-menu {
-        padding: 0 12px 10px 12px;
-    }
-
-    /* Menú principal centrado */
-    .menu-principal {
-        width: 100%;
-        justify-content: center;
-    }
-
-    /* Menú en botones pequeños */
-    .menu {
-        width: 100%;
-        max-width: 370px;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-        margin: 0 auto;
-    }
-
-    /* Enlaces del menú más chicos */
-    .menu a {
-        background-color: #f2f2f2;
-        color: #111;
-        font-size: 13px;
-        padding: 10px 6px;
-        border-radius: 20px;
-        text-align: center;
-        line-height: 1.1;
-    }
-
-    .menu a:hover {
-        background-color: #e60000;
-        color: white;
-    }
-
-    /* Redes más compactas */
-    .redes-header {
-        position: static;
-        margin-top: 12px;
-        justify-content: center;
-        gap: 8px;
-    }
-
-    .redes-header a {
-        font-size: 12px;
-        padding: 9px 12px;
-        border-radius: 22px;
-    }
-
-    /* Portada más controlada */
-    .portada {
-        min-height: 560px;
-    }
-
-    .contenido-portada {
-        min-height: 360px;
-        padding: 35px 18px;
-    }
-
-    .etiqueta {
-        font-size: 11px;
-        letter-spacing: 2px;
-        padding: 8px 12px;
-    }
-
-    .contenido-portada h2 {
-        font-size: 32px;
-        line-height: 1.1;
-    }
-
-    .texto-portada {
-        font-size: 15px;
-    }
-
-    .boton {
-        font-size: 13px;
-        padding: 11px 16px;
-    }
-
-    /* Imagen de portada abajo */
-    .imagen-portada {
-        height: 42%;
-        opacity: 0.55;
-        background-position: center;
+    /* Footer */
+    footer {
+        font-size: 14px;
     }
 }
