@@ -581,6 +581,44 @@ footer {
 }
 
 /* =============================== */
+/* GRUPOS DEL CATÁLOGO */
+/* =============================== */
+
+/* Separación entre cada grupo de productos */
+.grupo-productos {
+    margin-top: 70px;
+}
+
+/* El primer grupo queda un poco más cerca del título general */
+.grupo-productos:first-of-type {
+    margin-top: 50px;
+}
+
+/* Encabezado de cada grupo */
+.encabezado-grupo {
+    margin-bottom: 28px;
+    text-align: left;
+}
+
+/* Título de cada grupo */
+.encabezado-grupo h3 {
+    font-size: 32px;
+    color: #111;
+    font-weight: 900;
+    border-left: 8px solid #e60000;
+    padding-left: 15px;
+}
+
+/* Descripción de cada grupo */
+.encabezado-grupo p {
+    font-size: 18px;
+    color: #444;
+    margin-top: 10px;
+    max-width: 900px;
+    line-height: 1.5;
+}
+
+/* =============================== */
 /* DISEÑO PARA TABLET */
 /* =============================== */
 
@@ -868,5 +906,31 @@ footer {
     /* Footer */
     footer {
         font-size: 14px;
+    }
+
+        /* Grupos del catálogo en celular */
+    .grupo-productos {
+        margin-top: 55px;
+    }
+
+    .grupo-productos:first-of-type {
+        margin-top: 40px;
+    }
+
+    .encabezado-grupo {
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+    .encabezado-grupo h3 {
+        font-size: 27px;
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .encabezado-grupo p {
+        font-size: 16px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
