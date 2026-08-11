@@ -1132,7 +1132,7 @@ footer {
     }
 
     .menu a {
-        font-size: 35px;
+        font-size: 20px;
         padding: 10px 6px;
         white-space: nowrap;
     }
@@ -1150,7 +1150,7 @@ footer {
 
     /* Botones de redes más compactos */
     .redes-header a {
-        font-size: 14px;
+        font-size: 13px;
         padding: 11px 15px;
         border-radius: 25px;
         white-space: nowrap;
