@@ -1084,4 +1084,75 @@ footer {
         width: 70%;
         opacity: 0.5;
     }
+
+    
+}
+
+
+
+
+/* =============================== */
+/* CORRECCIÓN REDES HEADER EN PC */
+/* =============================== */
+
+@media screen and (min-width: 901px) {
+
+    /* El header acomoda logo, menú y redes sin encimarse */
+    .encabezado {
+        min-height: 135px;
+        display: flex;
+        align-items: center;
+    }
+
+    /* La zona del menú ahora se acomoda en fila */
+    .zona-menu {
+        width: 100%;
+        padding: 18px 28px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    /* El menú ocupa el espacio disponible */
+    .menu-principal {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Bajamos un poco el tamaño para que quepa bien */
+    .menu {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+
+    .menu a {
+        font-size: 35px;
+        padding: 10px 6px;
+        white-space: nowrap;
+    }
+
+    /* Las redes ya no van flotando */
+    .redes-header {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 19px;
+        flex-wrap: wrap;
+        max-width: 520px;
+    }
+
+    /* Botones de redes más compactos */
+    .redes-header a {
+        font-size: 14px;
+        padding: 11px 15px;
+        border-radius: 25px;
+        white-space: nowrap;
+    }
 }
