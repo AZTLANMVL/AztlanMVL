@@ -1,18 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <meta charset="utf-8">
-  <title>Cargando Andamios Aztlán...</title>
-  <script>
-    // Si viene de Facebook con fbclid, limpia la URL y redirige al inicio
-    var url = new URL(window.location.href);
-    if (url.searchParams.has('fbclid')) {
-      url.searchParams.delete('fbclid');
-    }
-    // Redirige limpiamente a la página principal del proyecto
-    window.location.replace("/AztlanMVL/" + url.search);
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirigiendo - Andamios Aztlán</title>
+
+    <script>
+        // Tomamos la URL actual
+        var url = new URL(window.location.href);
+
+        // Eliminamos el código fbclid que agrega Facebook
+        if (url.searchParams.has("fbclid")) {
+            url.searchParams.delete("fbclid");
+        }
+
+        // Redirigimos a la página principal del proyecto en GitHub Pages
+        window.location.replace("/AztlanMVL/" + url.search + url.hash);
+    </script>
 </head>
 <body>
+    <p>Redirigiendo a Andamios Aztlán...</p>
 </body>
 </html>

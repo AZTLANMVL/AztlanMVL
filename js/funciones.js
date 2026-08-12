@@ -1,3 +1,28 @@
+/* =============================== */
+/* LIMPIAR URL DE FACEBOOK */
+/* =============================== */
+
+// Este código elimina el parámetro fbclid que Facebook agrega a veces en la URL
+if (window.location.search.indexOf("fbclid=") !== -1) {
+
+    // Tomamos la URL actual de la página
+    var url = new URL(window.location.href);
+
+    // Eliminamos solamente el parámetro fbclid
+    url.searchParams.delete("fbclid");
+
+    // Actualizamos la URL sin recargar la página
+    window.history.replaceState(
+        {},
+        document.title,
+        url.pathname + url.search + url.hash
+    );
+}
+
+/* =============================== */
+/* TARJETAS DEL CATÁLOGO */
+/* =============================== */
+
 // Esperamos a que cargue toda la página
 document.addEventListener("DOMContentLoaded", function () {
 
