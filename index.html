@@ -473,6 +473,25 @@
     <p>© 2026 Andamios Aztlán - Renta de andamios y accesorios</p>
 </footer>
 
+<script>
+    // Detecta si Facebook agregó el código fbclid en la URL
+    if (window.location.search.indexOf("fbclid=") !== -1) {
+
+        // Tomamos la URL actual
+        var url = new URL(window.location.href);
+
+        // Eliminamos solamente el parámetro fbclid
+        url.searchParams.delete("fbclid");
+
+        // Actualizamos la URL sin recargar la página
+        window.history.replaceState(
+            {},
+            document.title,
+            url.pathname + url.search + url.hash
+        );
+    }
+</script>
+
 <script src="js/funciones.js"></script>
 </body>
 </html>
