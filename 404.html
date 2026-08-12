@@ -6,16 +6,23 @@
     <title>Redirigiendo - Andamios Aztlán</title>
 
     <script>
-        // Tomamos la URL actual
-        var url = new URL(window.location.href);
+        // Redirección para errores 404 en GitHub Pages
+        (function () {
 
-        // Eliminamos el código fbclid que agrega Facebook
-        if (url.searchParams.has("fbclid")) {
-            url.searchParams.delete("fbclid");
-        }
+            // Tomamos la URL actual
+            var url = new URL(window.location.href);
 
-        // Redirigimos a la página principal del proyecto en GitHub Pages
-        window.location.replace("/AztlanMVL/" + url.search + url.hash);
+            // Eliminamos el parámetro fbclid si Facebook lo agregó
+            if (url.searchParams.has("fbclid")) {
+                url.searchParams.delete("fbclid");
+            }
+
+            // Redirigimos al inicio correcto del proyecto
+            window.location.replace(
+                window.location.origin + "/AztlanMVL/" + url.search + url.hash
+            );
+
+        })();
     </script>
 </head>
 <body>
